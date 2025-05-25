@@ -13,7 +13,14 @@ fn createList(n: ?i32) Node {
     return node;
 }
 
+fn traverse(list: *Node) void {
+    var temp: ?*Node = list;
 
+    while(temp != null) {
+        std.debug.print("{any}\n", .{temp.?.data});
+        temp = temp.?.next;
+    }
+}
 
 pub fn main() void {
     var list = createList(1);
@@ -23,11 +30,7 @@ pub fn main() void {
 
     list.next.?.data = 2;
 
-    var temp: ?*Node = &list;
-    while(temp != null) {
-        std.debug.print("{any}\n", .{temp.?.data});
-        temp = temp.?.next;
-    }
+    traverse(&list);
 
     std.debug.print("List: {any}\n", .{list});
 }
