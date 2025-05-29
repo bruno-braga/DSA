@@ -8,7 +8,7 @@ pub fn main() !void {
     const allocator = gpa.allocator();
 
     const ptr = try allocator.create(i32);
-    errdefer allocator.destroy(ptr);
+    errdefer allocator.destroy(ptr); // avoid memory leak in case of a fail
 
     ptr.* = 300;
 
