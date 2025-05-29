@@ -22,13 +22,22 @@ fn traverse(list: *Node) void {
     }
 }
 
-pub fn main() void {
-    var list = createList(1);
-    
+fn addAtEnd(list: *Node, n: ?i32) void {
     var next_node = Node{};
     list.next = &next_node;
 
-    list.next.?.data = 2;
+    list.next.?.data = n;
+}
+
+pub fn main() void {
+    var list = createList(1);
+    
+    // var next_node = Node{};
+    // list.next = &next_node;
+
+    // list.next.?.data = 2;
+
+    addAtEnd(&list, 2);
 
     traverse(&list);
 
